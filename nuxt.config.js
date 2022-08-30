@@ -1,83 +1,98 @@
-import colors from 'vuetify/es5/util/colors'
-
 export default {
-  // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - greenhouse-frontend',
-    title: 'greenhouse-frontend',
+    title: 'Greenhouse Frontend',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
-  // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-  ],
+  router: {
+    middleware: ['userSync']
+  },
 
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-  ],
+  plugins: [],
 
-  // Auto import components: https://go.nuxtjs.dev/config-components
+  css: [],
+
   components: true,
 
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module',
-    // https://go.nuxtjs.dev/stylelint
-    '@nuxtjs/stylelint-module',
-    // https://go.nuxtjs.dev/vuetify
-    '@nuxtjs/vuetify'
-  ],
-
-  // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    // https://go.nuxtjs.dev/axios
+    '@nuxtjs/vuetify',
     '@nuxtjs/axios',
-    // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/auth',
+    'nuxt-webfontloader',
   ],
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/'
-  },
+  modules: [
+  ],
 
-  // PWA module configuration: https://go.nuxtjs.dev/pwa
-  pwa: {
-    manifest: {
-      lang: 'en'
+  auth: {
+    redirect: {
+      login: '/', // redirect when login is required
+      callback: '/auth/signed-in', // landingpage after 
+      home: '/wizard' // redirect after successful login
+    },
+    strategies: {
+      local: false,
+      auth0: {
+        domain: process.env.AUTH0_DOMAIN,
+        client_id: process.env.AUTH0_CLIENT_ID,
+        audience: process.env.AUTH0_AUDIENCE
+      }
     }
   },
 
-  // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    treeShake: true,
     theme: {
-      dark: true,
+      options: { customProperties: true },
       themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3
+        light: {
+          primary: '#6B2F1B',
+          secondary: '#784C18',
+          accent: '#36156B',
+          info: '#1C87B8',
+          warning: '#B8431C',
+          error: '#82251A',
+          success: '#189E33'
         }
       }
     }
   },
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
+  axios: {},
+
+  pwa: {
+    manifest: {
+      lang: 'de',
+    },
+  },
+
+  build: {},
+
+  watchers: {
+    webpack: {
+      ignored: '/node_modules/',
+    },
+  },
+
+
+  webfontloader: {
+    google: {
+      families: ['Roboto:400', 'Brawler', 'Playfair Display'],
+    }
+  },
+
+  plugins: [
+    { src: '@/plugins/draggable' }
+  ],
+
+  publicRuntimeConfig: {
+    backendUrl: 'https://eilkurier-backend.herokuapp.com/api'
   }
 }
