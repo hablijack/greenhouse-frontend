@@ -10,7 +10,7 @@ export default {
   },
 
   router: {
-    middleware: ['userSync']
+    //middleware: ['userSync']
   },
 
   plugins: [],
@@ -80,7 +80,6 @@ export default {
       ignored: '/node_modules/',
     },
   },
-
 
   webfontloader: {
     google: {
