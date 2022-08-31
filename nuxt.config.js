@@ -83,7 +83,7 @@ export default {
 
   webfontloader: {
     google: {
-      families: ['Roboto:400', 'Brawler', 'Playfair Display'],
+      families: ['Orbitron:900'],
     }
   },
 

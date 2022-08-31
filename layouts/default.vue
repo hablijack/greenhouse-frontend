@@ -1,24 +1,22 @@
 <template>
-  <v-app>
-    <Header></Header>
+  <v-app style="background-color: #dfdfdf">
+    <Navigation/>
     <v-main>
-      <div class="main-content">
-        <Nuxt />
-      </div>
+      <Nuxt />
     </v-main>
-    <Footer></Footer>
   </v-app>
 </template>
 
 <script>
-import Header from '~/components/Header.vue';
+import Navigation from "../components/Navigation.vue";
 export default {
   name: "DefaultLayout",
   data() {
     return {
-      title: "Vuetify.js"
+      title: "Vuetify.js",
+      drawer: null
     };
   },
-  components: { Header }
+  components: { Navigation }
 }
 </script>
