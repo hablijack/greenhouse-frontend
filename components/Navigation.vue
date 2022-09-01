@@ -1,7 +1,7 @@
 <template>
     <v-navigation-drawer v-model="drawer" app dark absolute color="#343a40">
         <v-list>
-            <v-list-item style="color: #5cad8a; font-weight: bold; font-size: 26px; font-family: 'Orbitron'">
+            <v-list-item style="text-shadow: 2px 0px 2px black; color: #5cad8a; font-weight: bold; font-size: 26px; font-family: 'Orbitron'">
                 <v-list-item-avatar class="mr-2">
                     <img src="~/assets/logo.png" />
                 </v-list-item-avatar>

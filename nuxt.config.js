@@ -15,7 +15,9 @@ export default {
 
   plugins: [],
 
-  css: [],
+  css: [
+        '~/assets/css/main.css',
+  ],
 
   components: true,
 
