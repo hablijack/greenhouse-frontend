@@ -36,11 +36,11 @@
     </v-row>
     <v-row dense>
       <v-col cols="9">
-        <v-card img="/_nuxt/assets/webcam_current.jpg" min-height="632" />
+        <v-card :img="require(`~/assets/webcam_current.jpg`)" min-height="632" />
       </v-col>
       <v-col cols="3">
         <v-row dense>
-          <v-col>
+          <v-col cols="12">
             <MeasureCard 
               headline='Luft innen' 
               measurement="72%"
@@ -49,16 +49,16 @@
               color="#5cad8a" />
           </v-col>
         
-          <v-col>
-          <MeasureCard 
-            headline='Wifi' 
-            measurement="62%"
-            description="Wlan Empfangsstärke im Gewächshaus" 
-            icon="mdi-wifi"
-            color="#5cad8a" />
+          <v-col cols="12">
+            <MeasureCard 
+              headline='Wifi' 
+              measurement="62%"
+              description="Wlan Empfangsstärke im Gewächshaus" 
+              icon="mdi-wifi"
+              color="#5cad8a" />
           </v-col>
 
-          <v-col>
+          <v-col cols="12">
             <MeasureCard 
               headline='Helligkeit' 
               measurement="62%"
@@ -66,7 +66,7 @@
               icon="mdi-white-balance-sunny"
               color="#5cad8a" />
           </v-col>
-          <v-col>
+          <v-col cols="12">
             <MeasureCard 
               headline='CO2' 
               measurement="406ppa"
