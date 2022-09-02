@@ -1,18 +1,18 @@
 <template>
-  <v-container fluid>
-    <v-row>
-      <v-col align="center">
+<v-container fill-height>
+    <v-row align="center" justify="center">
+      <v-col cols="12" align="center">
         <v-progress-circular
-          :size="120"
-          :width="12"
+          :size="300"
+          :width="15"
           color="#5cad8a"
           indeterminate
-        ></v-progress-circular>
+        >
+            <img width="90%" src="~/assets/logo.png" />
+        </v-progress-circular>
       </v-col>
-    </v-row>
-    <v-row>
-      <v-col align="center">
-        <h1 color="white">Anmeldung in Arbeit ...</h1>
+      <v-col cols="12" align="center">
+        <h1 style="color: #5cad8a;">Anmeldung in Arbeit ...</h1>
       </v-col>
     </v-row>
   </v-container>

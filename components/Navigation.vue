@@ -45,13 +45,12 @@
                     <v-list-item-subtitle>{{ $auth.user.name }}</v-list-item-subtitle>
                 </v-list-item-content>
             </v-list-item>
-            <v-list-item>
-                <v-btn @click="$auth.logout()" x-large outlined elevation="16" color="#5cad8a" class="mt-3" to="/">logout</v-btn>
-            </v-list-item>
-            <v-divider/>
-            <v-list-item>
-                <v-list-item-content style="align-items: center;">
-                    <img style="max-width: 190px;" src="~/assets/greenhouse.png" />
+            <v-list-item  v-if="$auth.$state.loggedIn">
+                <v-list-item-content  style="align-items: center;">
+                    <v-btn @click="$auth.logout()" link class="mB-3" to="/">
+                        <v-icon>mdi-logout</v-icon>
+                        logout
+                    </v-btn>
                 </v-list-item-content>
             </v-list-item>
             <v-divider/>

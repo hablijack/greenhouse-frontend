@@ -117,6 +117,7 @@
 <script>
 export default {
   name: 'Dashboard',
+  middleware: ['auth'],
   data() {
     return {
 
