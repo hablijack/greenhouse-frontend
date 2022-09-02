@@ -1,122 +1,24 @@
 <template>
-  <v-container fluid>
-    <v-row dense>
-      <v-col cols="3">
-        <MeasureCard 
-          headline='Luft innen' 
-          measurement="21,7°C"
-          description="Themperatur innerhalb des Gewächshauses" 
-          icon="mdi-thermometer"
-          color="#5cad8a" />
-      </v-col>
-      <v-col cols="3">
-        <MeasureCard 
-          headline='Luft außen' 
-          measurement="25,2°C"
-          description="Themperatur außerhalb des Gewächshauses" 
-          icon="mdi-thermometer"
-          color="#5cad8a" />
-      </v-col>
-      <v-col cols="3">
-        <MeasureCard 
-          headline='Boden' 
-          measurement="19,1°C"
-          description="Themperatur der Erde im Gewächshaus" 
-          icon="mdi-thermometer"
-          color="#5cad8a" />
-      </v-col>
-      <v-col cols="3">
-        <MeasureCard 
-          headline='Batterie' 
-          measurement="100%"
-          description="Ladezustand der Photovoltaik-Batterie" 
-          icon="mdi-battery"
-          color="#5cad8a" />
-      </v-col>
-    </v-row>
-    <v-row dense>
-      <v-col cols="9">
-        <v-card :img="require(`~/assets/webcam_current.jpg`)" min-height="632" />
-      </v-col>
-      <v-col cols="3">
-        <v-row dense>
-          <v-col cols="12">
-            <MeasureCard 
-              headline='Luft innen' 
-              measurement="72%"
-              description="Luftfeuchte im Gewächshaus" 
-              icon="mdi-water"
-              color="#5cad8a" />
-          </v-col>
-        
-          <v-col cols="12">
-            <MeasureCard 
-              headline='Wifi' 
-              measurement="62%"
-              description="Wlan Empfangsstärke im Gewächshaus" 
-              icon="mdi-wifi"
-              color="#5cad8a" />
-          </v-col>
-
-          <v-col cols="12">
-            <MeasureCard 
-              headline='Helligkeit' 
-              measurement="62%"
-              description="Intensität der Sonneneinstrahlung im Gewächshaus" 
-              icon="mdi-white-balance-sunny"
-              color="#5cad8a" />
-          </v-col>
-          <v-col cols="12">
-            <MeasureCard 
-              headline='CO2' 
-              measurement="406ppa"
-              description="CO2 sättigung im Gewächshaus" 
-              icon="mdi-soundcloud"
-              color="#5cad8a" />
+    <v-container fill-height>
+        <v-row align="center" justify="center">
+            <v-col cols="2">
+                <img width="100%" src="~/assets/logo.png" />
+            </v-col>
+            <v-col cols="10" style="text-shadow: 4px 0px 7px black; color: #5cad8a; font-weight: bold; font-size:8vw; font-family: 'Orbitron'">
+                Greenhouse
+            </v-col>
+            <v-col cols="12" class="text-center">
+                <h2>Jetzt anmelden:</h2>
+                <v-btn @click="$auth.loginWith('auth0')" x-large outlined elevation="16" color="#5cad8a" class="mt-3" to="/">Login mit Auth0 </v-btn>
             </v-col>
         </v-row>
-      </v-col>
-    </v-row>
-    <v-row dense>
-      <v-col cols="3">
-        <MeasureCard 
-          headline='Bodenfeuchte Line1' 
-          measurement="0%"
-          description="Bodenfeuchte in Pflanzspur 1" 
-          icon="mdi-water"
-          color="#5cad8a" />
-      </v-col>
-      <v-col cols="3">
-        <MeasureCard 
-          headline='Bodenfeuchte Line2' 
-          measurement="0%"
-          description="Bodenfeuchte in Pflanzspur 2" 
-          icon="mdi-water"
-          color="#5cad8a" />
-      </v-col>
-      <v-col cols="3">
-        <MeasureCard 
-          headline='Bodenfeuchte Line3' 
-          measurement="0%"
-          description="Bodenfeuchte in Pflanzspur 3" 
-          icon="mdi-water"
-          color="#5cad8a" />
-      </v-col>
-      <v-col cols="3">
-        <MeasureCard 
-          headline='Bodenfeuchte Line4' 
-          measurement="0%"
-          description="Bodenfeuchte in Pflanzspur 4" 
-          icon="mdi-water"
-          color="#5cad8a" />
-      </v-col>
-    </v-row>
-  </v-container>
+    </v-container>
 </template>
 
 <script>
 export default {
-  name: 'Dashboard',
+  name: 'Login',
+  layout: 'fullscreen',
   data() {
     return {
 

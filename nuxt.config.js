@@ -36,7 +36,7 @@ export default {
     redirect: {
       login: '/', // redirect when login is required
       callback: '/auth/signed-in', // landingpage after 
-      home: '/wizard' // redirect after successful login
+      home: '/dashboard' // redirect after successful login
     },
     strategies: {
       local: false,

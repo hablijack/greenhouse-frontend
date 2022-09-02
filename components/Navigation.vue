@@ -1,5 +1,5 @@
 <template>
-    <v-navigation-drawer v-model="drawer" app dark absolute color="#343a40">
+    <v-navigation-drawer app dark absolute color="#343a40">
         <v-list>
             <v-list-item style="text-shadow: 2px 0px 2px black; color: #5cad8a; font-weight: bold; font-size: 26px; font-family: 'Orbitron'">
                 <v-list-item-avatar class="mr-2">
@@ -34,16 +34,19 @@
 
         <template v-slot:append>
             <v-divider/>
-            <v-list-item link>
+            <v-list-item link v-if="$auth.$state.loggedIn">
                 <v-list-item-avatar class="mr-2">
                     <v-icon>mdi-account</v-icon>
                 </v-list-item-avatar>
                 <v-list-item-content>
                     <v-list-item-title class="text-h6">
-                        Christoph Habel
+                        {{ $auth.user.nickname.split('.').join(' ') }}
                     </v-list-item-title>
-                    <v-list-item-subtitle>christoph.habel@posteo.de</v-list-item-subtitle>
+                    <v-list-item-subtitle>{{ $auth.user.name }}</v-list-item-subtitle>
                 </v-list-item-content>
+            </v-list-item>
+            <v-list-item>
+                <v-btn @click="$auth.logout()" x-large outlined elevation="16" color="#5cad8a" class="mt-3" to="/">logout</v-btn>
             </v-list-item>
             <v-divider/>
             <v-list-item>
@@ -67,6 +70,7 @@
 export default {
     name: "Navigation",
     data() {
+        console.log();
         return {
 
         }
