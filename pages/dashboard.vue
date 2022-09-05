@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-row dense>
-      <v-col cols="3">
+      <v-col sm="12" md="6" lg="3">
         <MeasureCard 
           headline='Luft innen' 
           measurement="21,7°C"
@@ -9,7 +9,7 @@
           icon="mdi-thermometer"
           color="#5cad8a" />
       </v-col>
-      <v-col cols="3">
+      <v-col sm="12" md="6" lg="3">
         <MeasureCard 
           headline='Luft außen' 
           measurement="25,2°C"
@@ -17,7 +17,7 @@
           icon="mdi-thermometer"
           color="#5cad8a" />
       </v-col>
-      <v-col cols="3">
+      <v-col sm="12" md="6" lg="3">
         <MeasureCard 
           headline='Boden' 
           measurement="19,1°C"
@@ -25,7 +25,7 @@
           icon="mdi-thermometer"
           color="#5cad8a" />
       </v-col>
-      <v-col cols="3">
+      <v-col sm="12" md="6" lg="3">
         <MeasureCard 
           headline='Batterie' 
           measurement="100%"
@@ -35,12 +35,12 @@
       </v-col>
     </v-row>
     <v-row dense>
-      <v-col cols="9">
+      <v-col cols="12" sm="12" md="12" lg="9">
         <v-card :img="require(`~/assets/webcam_current.jpg`)" min-height="632" />
       </v-col>
-      <v-col cols="3">
+      <v-col cols="12" sm="12" md="12" lg="3">
         <v-row dense>
-          <v-col cols="12">
+          <v-col xs="12" sm="12" md="6" lg="12">
             <MeasureCard 
               headline='Luft innen' 
               measurement="72%"
@@ -49,7 +49,7 @@
               color="#5cad8a" />
           </v-col>
         
-          <v-col cols="12">
+          <v-col sm="12" md="6" lg="12">
             <MeasureCard 
               headline='Wifi' 
               measurement="62%"
@@ -58,7 +58,7 @@
               color="#5cad8a" />
           </v-col>
 
-          <v-col cols="12">
+          <v-col sm="12" md="6" lg="12">
             <MeasureCard 
               headline='Helligkeit' 
               measurement="62%"
@@ -66,7 +66,7 @@
               icon="mdi-white-balance-sunny"
               color="#5cad8a" />
           </v-col>
-          <v-col cols="12">
+          <v-col sm="12" md="6" lg="12">
             <MeasureCard 
               headline='CO2' 
               measurement="406ppa"
@@ -78,7 +78,7 @@
       </v-col>
     </v-row>
     <v-row dense>
-      <v-col cols="3">
+      <v-col sm="12" md="6" lg="3">
         <MeasureCard 
           headline='Bodenfeuchte Line1' 
           measurement="0%"
@@ -86,7 +86,7 @@
           icon="mdi-water"
           color="#5cad8a" />
       </v-col>
-      <v-col cols="3">
+      <v-col sm="12" md="6" lg="3">
         <MeasureCard 
           headline='Bodenfeuchte Line2' 
           measurement="0%"
@@ -94,7 +94,7 @@
           icon="mdi-water"
           color="#5cad8a" />
       </v-col>
-      <v-col cols="3">
+      <v-col sm="12" md="6" lg="3">
         <MeasureCard 
           headline='Bodenfeuchte Line3' 
           measurement="0%"
@@ -102,7 +102,7 @@
           icon="mdi-water"
           color="#5cad8a" />
       </v-col>
-      <v-col cols="3">
+      <v-col sm="12" md="6" lg="3">
         <MeasureCard 
           headline='Bodenfeuchte Line4' 
           measurement="0%"

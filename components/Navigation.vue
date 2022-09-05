@@ -35,7 +35,7 @@
         <template v-slot:append>
             <v-divider/>
             <v-list-item link v-if="$auth.$state.loggedIn">
-                <v-list-item-avatar class="mr-2">
+                <v-list-item-avatar class="mr-2" style="backgroundColor: #272727; borderColor: white;">
                     <v-icon>mdi-account</v-icon>
                 </v-list-item-avatar>
                 <v-list-item-content>
@@ -69,7 +69,6 @@
 export default {
     name: "Navigation",
     data() {
-        console.log();
         return {
 
         }
