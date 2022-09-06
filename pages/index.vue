@@ -1,10 +1,8 @@
 <template>
     <v-container fill-height>
         <v-row align="center" justify="center">
-            <v-col cols="2">
-                <img width="100%" src="~/assets/logo.png" />
-            </v-col>
-            <v-col cols="10" style="text-shadow: 4px 0px 7px black; color: #5cad8a; font-weight: bold; font-size:8vw; font-family: 'Orbitron'">
+            <v-col cols="12" style="text-align: center; text-shadow: 4px 0px 7px black; color: #5cad8a; font-weight: bold; font-size:8vw; font-family: 'Orbitron'">
+                <img src="~/assets/logo_shadow.png" />
                 Greenhouse
             </v-col>
             <v-col cols="12" class="text-center">

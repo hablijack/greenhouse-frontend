@@ -6,7 +6,7 @@
             </v-list-item>
             <v-list-item style="text-shadow: 2px 0px 2px black; color: #5cad8a; font-weight: bold; font-size: 26px; font-family: 'Orbitron'">
                 <v-list-item-avatar class="mr-2">
-                    <img src="~/assets/logo.png" />
+                    <img src="~/assets/logo_shadow.png" />
                 </v-list-item-avatar>
                 Greenhouse
             </v-list-item>
