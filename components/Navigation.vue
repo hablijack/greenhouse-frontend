@@ -1,6 +1,9 @@
 <template>
     <v-navigation-drawer app dark absolute color="#343a40">
         <v-list>
+            <v-list-item>
+                 <img width="220" src="~/assets/green_sphere.gif" />
+            </v-list-item>
             <v-list-item style="text-shadow: 2px 0px 2px black; color: #5cad8a; font-weight: bold; font-size: 26px; font-family: 'Orbitron'">
                 <v-list-item-avatar class="mr-2">
                     <img src="~/assets/logo.png" />
@@ -30,10 +33,18 @@
                 </v-list-item-icon>
                 <v-list-item-title style="line-height: 2rem;" class="text-h6">History</v-list-item-title>
             </v-list-item>
+            <v-divider/>
         </v-list>
 
         <template v-slot:append>
-            <v-divider/>
+            <v-list-item v-if="$auth.$state.loggedIn">
+                <v-list-item-content>
+                    <v-btn @click="$auth.logout()" to="/" >
+                        <v-icon>mdi-logout</v-icon>
+                        logout
+                    </v-btn>
+                </v-list-item-content>
+            </v-list-item>
             <v-list-item link v-if="$auth.$state.loggedIn">
                 <v-list-item-avatar class="mr-2" style="backgroundColor: #272727; borderColor: white;">
                     <v-icon>mdi-account</v-icon>
@@ -45,14 +56,6 @@
                     <v-list-item-subtitle>{{ $auth.user.name }}</v-list-item-subtitle>
                 </v-list-item-content>
             </v-list-item>
-            <v-list-item  v-if="$auth.$state.loggedIn">
-                <v-list-item-content  style="align-items: center;">
-                    <v-btn @click="$auth.logout()" link class="mB-3" to="/">
-                        <v-icon>mdi-logout</v-icon>
-                        logout
-                    </v-btn>
-                </v-list-item-content>
-            </v-list-item>
             <v-divider/>
             <v-list-item style="min-height: 20px;">
                 <v-list-item-subtitle class="ma-3" style="align-items: center;">
@@ -60,7 +63,6 @@
                 </v-list-item-subtitle>
             </v-list-item>
         </template>
-
 
     </v-navigation-drawer>
 </template>

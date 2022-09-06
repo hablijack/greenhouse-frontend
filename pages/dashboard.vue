@@ -40,7 +40,7 @@
       </v-col>
       <v-col cols="12" sm="12" md="12" lg="3">
         <v-row dense>
-          <v-col xs="12" sm="12" md="6" lg="12">
+          <v-col cols="12" sm="12" md="6" lg="12">
             <MeasureCard 
               headline='Luft innen' 
               measurement="72%"
@@ -49,7 +49,7 @@
               color="#5cad8a" />
           </v-col>
         
-          <v-col sm="12" md="6" lg="12">
+          <v-col cols="12" sm="12" md="6" lg="12">
             <MeasureCard 
               headline='Wifi' 
               measurement="62%"
@@ -58,7 +58,7 @@
               color="#5cad8a" />
           </v-col>
 
-          <v-col sm="12" md="6" lg="12">
+          <v-col cols="12" sm="12" md="6" lg="12">
             <MeasureCard 
               headline='Helligkeit' 
               measurement="62%"
@@ -66,7 +66,7 @@
               icon="mdi-white-balance-sunny"
               color="#5cad8a" />
           </v-col>
-          <v-col sm="12" md="6" lg="12">
+          <v-col cols="12" sm="12" md="6" lg="12">
             <MeasureCard 
               headline='CO2' 
               measurement="406ppa"
