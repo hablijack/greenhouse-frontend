@@ -44,8 +44,8 @@
 export default {
   name: 'Dashboard',
   middleware: ['auth'],
-  fetchOnServer: false,
-  async asyncData({$axios, $config}) {
+  async asyncData({ $axios, $config }) {
+    console.log(`${$config.backendUrl}/api/sensors`);
     const sensors = await $axios.$get(`${$config.backendUrl}/api/sensors`);
     return { sensors };
   },
