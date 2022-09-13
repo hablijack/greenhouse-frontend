@@ -94,6 +94,6 @@ export default {
   ],
 
   publicRuntimeConfig: {
-    backendUrl: 'https://eilkurier-backend.herokuapp.com/api'
+    backendUrl: process.env.BACKEND_URL
   }
 }

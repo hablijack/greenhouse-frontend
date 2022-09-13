@@ -1,36 +1,12 @@
 <template>
   <v-container fluid>
     <v-row dense>
-      <v-col sm="12" md="6" lg="3">
+      <v-col v-for="sensor in sensors.slice(0,4)" v-bind:key="sensor.name" sm="12" md="6" lg="3">
         <MeasureCard 
-          headline='Luft innen' 
-          measurement="21,7°C"
-          description="Themperatur innerhalb des Gewächshauses" 
-          icon="mdi-thermometer"
-          color="#5cad8a" />
-      </v-col>
-      <v-col sm="12" md="6" lg="3">
-        <MeasureCard 
-          headline='Luft außen' 
-          measurement="25,2°C"
-          description="Themperatur außerhalb des Gewächshauses" 
-          icon="mdi-thermometer"
-          color="#5cad8a" />
-      </v-col>
-      <v-col sm="12" md="6" lg="3">
-        <MeasureCard 
-          headline='Boden' 
-          measurement="19,1°C"
-          description="Themperatur der Erde im Gewächshaus" 
-          icon="mdi-thermometer"
-          color="#5cad8a" />
-      </v-col>
-      <v-col sm="12" md="6" lg="3">
-        <MeasureCard 
-          headline='Batterie' 
-          measurement="100%"
-          description="Ladezustand der Photovoltaik-Batterie" 
-          icon="mdi-battery"
+          :headline="sensor.name"
+          :measurement="sensor.unit"
+          :description="sensor.description" 
+          :icon="sensor.icon"
           color="#5cad8a" />
       </v-col>
     </v-row>
@@ -40,74 +16,24 @@
       </v-col>
       <v-col cols="12" sm="12" md="12" lg="3">
         <v-row dense>
-          <v-col cols="12" sm="12" md="6" lg="12">
+          <v-col v-for="sensor in sensors.slice(4,8)" v-bind:key="sensor.name" cols="12" sm="12" md="6" lg="12">
             <MeasureCard 
-              headline='Luft innen' 
-              measurement="72%"
-              description="Luftfeuchte im Gewächshaus" 
-              icon="mdi-water"
+              :headline="sensor.name"
+              :measurement="sensor.unit"
+              :description="sensor.description" 
+              :icon="sensor.icon"
               color="#5cad8a" />
           </v-col>
-        
-          <v-col cols="12" sm="12" md="6" lg="12">
-            <MeasureCard 
-              headline='Wifi' 
-              measurement="62%"
-              description="Wlan Empfangsstärke im Gewächshaus" 
-              icon="mdi-wifi"
-              color="#5cad8a" />
-          </v-col>
-
-          <v-col cols="12" sm="12" md="6" lg="12">
-            <MeasureCard 
-              headline='Helligkeit' 
-              measurement="62%"
-              description="Intensität der Sonneneinstrahlung im Gewächshaus" 
-              icon="mdi-white-balance-sunny"
-              color="#5cad8a" />
-          </v-col>
-          <v-col cols="12" sm="12" md="6" lg="12">
-            <MeasureCard 
-              headline='CO2' 
-              measurement="406ppa"
-              description="CO2 sättigung im Gewächshaus" 
-              icon="mdi-soundcloud"
-              color="#5cad8a" />
-            </v-col>
         </v-row>
       </v-col>
     </v-row>
     <v-row dense>
-      <v-col sm="12" md="6" lg="3">
+      <v-col v-for="sensor in sensors.slice(8,12)" v-bind:key="sensor.name" sm="12" md="6" lg="3">
         <MeasureCard 
-          headline='Bodenfeuchte Line1' 
-          measurement="0%"
-          description="Bodenfeuchte in Pflanzspur 1" 
-          icon="mdi-water"
-          color="#5cad8a" />
-      </v-col>
-      <v-col sm="12" md="6" lg="3">
-        <MeasureCard 
-          headline='Bodenfeuchte Line2' 
-          measurement="0%"
-          description="Bodenfeuchte in Pflanzspur 2" 
-          icon="mdi-water"
-          color="#5cad8a" />
-      </v-col>
-      <v-col sm="12" md="6" lg="3">
-        <MeasureCard 
-          headline='Bodenfeuchte Line3' 
-          measurement="0%"
-          description="Bodenfeuchte in Pflanzspur 3" 
-          icon="mdi-water"
-          color="#5cad8a" />
-      </v-col>
-      <v-col sm="12" md="6" lg="3">
-        <MeasureCard 
-          headline='Bodenfeuchte Line4' 
-          measurement="0%"
-          description="Bodenfeuchte in Pflanzspur 4" 
-          icon="mdi-water"
+          :headline="sensor.name"
+          :measurement="sensor.unit"
+          :description="sensor.description" 
+          :icon="sensor.icon"
           color="#5cad8a" />
       </v-col>
     </v-row>
@@ -118,10 +44,11 @@
 export default {
   name: 'Dashboard',
   middleware: ['auth'],
-  data() {
-    return {
-
-    }
-  }
-}
+  fetchOnServer: false,
+  async asyncData({$axios, $config}) {
+    const sensors = await $axios.$get(`${$config.backendUrl}/api/sensors`);
+    return { sensors };
+  },
+};
 </script>
+
