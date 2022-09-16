@@ -57,14 +57,12 @@ export default {
   },
   methods: {
     updateMeasurements(measurements) {
-      console.log(measurements);
       this.measurements = measurements;
     },
   },
   mounted() {
-    const socket = new WebSocket("ws://localhost:8080/api/sensors/measurements/socket");
+    const socket = new WebSocket(`ws://${location.host}/api/sensors/measurements/socket`);
     let nuxtPage = this;
-    console.log("mounted")
     socket.onmessage = function (message) {
       nuxtPage.updateMeasurements(JSON.parse(message.data));
     };

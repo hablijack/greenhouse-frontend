@@ -6,6 +6,14 @@
                     {{  headline  }}
                 </div>
                 <v-list-item-title class="text-h3">
+                     <v-progress-linear
+                        color="white"
+                        style="float: left; width: 100px; margin-right: 20px; margin-top: 15px;"
+                        indeterminate
+                        rounded
+                        height="20"
+                        v-if="!measurement"
+                    ></v-progress-linear>
                     {{  measurement  }} {{ unit }}
                 </v-list-item-title>
                 <v-list-item-subtitle>

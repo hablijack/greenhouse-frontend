@@ -29,9 +29,6 @@ export default {
     'nuxt-webfontloader',
   ],
 
-  modules: [
-  ],
-
   auth: {
     redirect: {
       login: '/', // redirect when login is required
@@ -95,5 +92,12 @@ export default {
 
   publicRuntimeConfig: {
     backendUrl: process.env.BACKEND_URL || 'http://yggdrasil.fritz.box:5550'
-  }
+  },
+
+  modules: [
+    '@nuxtjs/proxy'
+  ],
+  proxy: [
+    'http://localhost:8080/api/sensors/measurements/socket'
+  ]
 }
