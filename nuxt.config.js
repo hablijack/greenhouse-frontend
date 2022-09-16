@@ -91,14 +91,13 @@ export default {
   ],
 
   publicRuntimeConfig: {
-    backendUrl: process.env.BACKEND_URL || 'http://yggdrasil.fritz.box:5550'
+    backendUrl: process.env.BACKEND_URL
   },
 
   modules: [
     '@nuxtjs/proxy'
   ],
   proxy: [
-    process.env.BACKEND_URL + "/api/sensors/measurements/socket" || 'http://yggdrasil.fritz.box:5550/api/sensors/measurements/socket'
-    // 'http://localhost:8080/api/sensors/measurements/socket'
+    process.env.BACKEND_URL + "/api/sensors/measurements/socket"
   ]
 }
