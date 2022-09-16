@@ -23,6 +23,7 @@ export default {
 
   buildModules: [
     '@nuxtjs/vuetify',
+    '@nuxtjs/proxy'
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/auth',
