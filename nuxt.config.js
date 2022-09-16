@@ -98,6 +98,7 @@ export default {
     '@nuxtjs/proxy'
   ],
   proxy: [
-    'http://localhost:8080/api/sensors/measurements/socket'
+    process.env.BACKEND_URL + "/api/sensors/measurements/socket" || 'http://yggdrasil.fritz.box:5550/api/sensors/measurements/socket'
+    // 'http://localhost:8080/api/sensors/measurements/socket'
   ]
 }
