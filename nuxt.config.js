@@ -96,8 +96,8 @@ export default {
   },
 
   modules: [
-    '@nuxtjs/proxy'
   ],
+  
   proxy: [
     process.env.BACKEND_URL + "/api/sensors/measurements/socket"
   ]
