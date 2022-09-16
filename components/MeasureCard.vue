@@ -6,7 +6,7 @@
                     {{  headline  }}
                 </div>
                 <v-list-item-title class="text-h3">
-                    {{  measurement  }}
+                    {{  measurement  }} {{ unit }}
                 </v-list-item-title>
                 <v-list-item-subtitle>
                     {{  description  }}
@@ -24,6 +24,7 @@ export default {
     name: "MeasureCard",
     props: [
         'headline',
+        'unit',
         'measurement',
         'icon',
         'description',

@@ -94,6 +94,6 @@ export default {
   ],
 
   publicRuntimeConfig: {
-    backendUrl: process.env.BACKEND_URL
+    backendUrl: process.env.BACKEND_URL || 'http://yggdrasil.fritz.box:5550'
   }
 }
