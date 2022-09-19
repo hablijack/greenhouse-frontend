@@ -60,7 +60,11 @@ export default {
     },
   },
   mounted() {
-    const socket = new WebSocket(`ws://${location.host}/api/sensors/measurements/socket`);
+    let protocol = 'ws';
+    if (location.protocol === 'https:') {
+      protocol = 'wss';
+    }
+    const socket = new WebSocket(`${protocol}://${location.host}/api/sensors/measurements/socket`);
     let nuxtPage = this;
     socket.onmessage = function (message) {
       nuxtPage.updateMeasurements(JSON.parse(message.data));
