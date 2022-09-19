@@ -51,8 +51,8 @@ export default {
     measurements: {},
   }),
   async asyncData({ $axios, $config }) {
-    //const sensors = await $axios.$get(`${$config.backendUrl}/api/sensors`);
-    return { sensors: [] };
+    const sensors = await $axios.$get('/api/sensors');
+    return { sensors };
   },
   methods: {
     updateMeasurements(measurements) {

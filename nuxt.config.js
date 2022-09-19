@@ -23,7 +23,6 @@ export default {
 
   buildModules: [
     '@nuxtjs/vuetify',
-    '@nuxtjs/proxy',
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/auth',
@@ -96,8 +95,4 @@ export default {
 
   modules: [
   ],
-
-  proxy: [
-    'http://yggdrasil:5550/api/sensors/measurements/socket',
-  ]
 }
