@@ -92,13 +92,12 @@ export default {
   ],
 
   publicRuntimeConfig: {
-    backendUrl: process.env.BACKEND_URL
   },
 
   modules: [
   ],
-  
+
   proxy: [
-    'ws://yggdrasil:5550/api/sensors/measurements/socket',
+    'http://yggdrasil:5550/api',
   ]
 }

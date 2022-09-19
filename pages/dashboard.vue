@@ -50,8 +50,8 @@ export default {
   data: () => ({
     measurements: {},
   }),
-  async asyncData({ $axios, $config }) {
-    const sensors = await $axios.$get(`${$config.backendUrl}/api/sensors`);
+  async asyncData({ $axios }) {
+    const sensors = await $axios.$get(`/api/sensors`);
     return { sensors };
   },
   methods: {
