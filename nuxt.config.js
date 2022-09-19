@@ -98,6 +98,6 @@ export default {
   ],
 
   proxy: [
-    'http://yggdrasil:5550/api',
+    'http://yggdrasil:5550/api/sensors/measurements/socket',
   ]
 }
