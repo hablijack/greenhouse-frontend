@@ -99,6 +99,6 @@ export default {
   ],
   
   proxy: [
-    process.env.BACKEND_URL + "/api/sensors/measurements/socket"
+    'ws://yggdrasil:5550/api/sensors/measurements/socket',
   ]
 }
