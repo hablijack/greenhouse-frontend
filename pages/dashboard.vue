@@ -51,7 +51,7 @@ export default {
     measurements: {},
   }),
   async asyncData({ $axios, $config }) {
-    const sensors = await $axios.$get('https://greenhouse.home-webserver.de/api/sensors');
+    const sensors = await $axios.$get(`https://${$config.domain}/api/sensors`);
     return { sensors };
   },
   methods: {
@@ -60,11 +60,7 @@ export default {
     },
   },
   mounted() {
-    let protocol = 'ws';
-    if (location.protocol === 'https:') {
-      protocol = 'wss';
-    }
-    const socket = new WebSocket(`${protocol}://${location.host}/api/sensors/measurements/socket`);
+    const socket = new WebSocket(`wss://${this.$config.domain}/api/sensors/measurements/socket`);
     let nuxtPage = this;
     socket.onmessage = function (message) {
       nuxtPage.updateMeasurements(JSON.parse(message.data));

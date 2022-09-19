@@ -91,6 +91,7 @@ export default {
   ],
 
   publicRuntimeConfig: {
+    domain: "greenhouse.home-webserver.de"
   },
 
   modules: [
