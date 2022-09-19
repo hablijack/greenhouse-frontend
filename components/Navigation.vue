@@ -2,11 +2,11 @@
     <v-navigation-drawer app dark absolute color="#343a40">
         <v-list>
             <v-list-item>
-                 <img width="220" src="~/assets/green_sphere.gif" />
+                 <img width="220" src="/img/green_sphere.gif" />
             </v-list-item>
             <v-list-item style="text-shadow: 2px 0px 2px black; color: #5cad8a; font-weight: bold; font-size: 26px; font-family: 'Orbitron'">
                 <v-list-item-avatar class="mr-2">
-                    <img src="~/assets/logo_shadow.png" />
+                    <img src="/img/logo_shadow.png" />
                 </v-list-item-avatar>
                 Greenhouse
             </v-list-item>
@@ -15,19 +15,25 @@
         <v-divider/>
 
         <v-list nav dense>
-            <v-list-item>
+            <v-list-item to="/dashboard">
                 <v-list-item-icon>
                     <v-icon>mdi-home</v-icon>
                 </v-list-item-icon>
                 <v-list-item-title style="line-height: 2rem;" class="text-h6">Dashboard</v-list-item-title>
             </v-list-item>
-            <v-list-item>
+            <v-list-item to="/satelites">
+                <v-list-item-icon>
+                    <v-icon>mdi-remote</v-icon>
+                </v-list-item-icon>
+                <v-list-item-title style="line-height: 2rem;" class="text-h6">Sateliten</v-list-item-title>
+            </v-list-item>
+            <v-list-item to="/control">
                 <v-list-item-icon>
                     <v-icon>mdi-toggle-switch</v-icon>
                 </v-list-item-icon>
                 <v-list-item-title style="line-height: 2rem;" class="text-h6">Control</v-list-item-title>
             </v-list-item>
-            <v-list-item>
+            <v-list-item to="/history">
                 <v-list-item-icon>
                     <v-icon>mdi-chart-areaspline</v-icon>
                 </v-list-item-icon>

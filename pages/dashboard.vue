@@ -13,7 +13,7 @@
     </v-row>
     <v-row dense>
       <v-col cols="12" sm="12" md="12" lg="9">
-        <v-card :img="require(`~/assets/webcam_current.jpg`)" min-height="632" />
+        <v-card img="/img/webcam_current.jpg" min-height="632" />
       </v-col>
       <v-col cols="12" sm="12" md="12" lg="3">
         <v-row dense>
@@ -52,8 +52,7 @@ export default {
   }),
   async asyncData({ $axios, $config }) {
     const sensors = await $axios.$get(`${$config.backendUrl}/api/sensors`);
-    const measurements = await $axios.$get(`${$config.backendUrl}/api/sensors/measurements/live`);
-    return { sensors, measurements };
+    return { sensors };
   },
   methods: {
     updateMeasurements(measurements) {

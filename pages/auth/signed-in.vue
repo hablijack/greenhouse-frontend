@@ -8,7 +8,7 @@
           color="#5cad8a"
           indeterminate
         >
-            <img width="90%" src="~/assets/logo.png" />
+            <img width="90%" src="/img/logo.png" />
         </v-progress-circular>
       </v-col>
       <v-col cols="12" align="center">
