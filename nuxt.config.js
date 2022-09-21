@@ -10,13 +10,10 @@ export default {
   },
 
   router: {
-    //middleware: ['userSync']
   },
 
-  plugins: [],
-
   css: [
-        '~/assets/css/main.css',
+    '~/assets/css/main.css',
   ],
 
   components: true,
@@ -87,7 +84,7 @@ export default {
   },
 
   plugins: [
-    { src: '@/plugins/draggable' }
+    '~/plugins/format-date.js'
   ],
 
   publicRuntimeConfig: {
