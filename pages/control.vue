@@ -71,7 +71,7 @@ export default {
     );
     let nuxtPage = this;
     socket.onmessage = function (message) {
-      nuxtPage.updateMeasurements(JSON.parse(message.data));
+      nuxtPage.updateLogs(JSON.parse(message.data));
     };
   },
 };
