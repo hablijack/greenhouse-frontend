@@ -8,12 +8,25 @@
             :id="id"
             :defaultState="initialValue"
             :color="color"
+            :style="transmitting ? 'display: none' : 'display: block'"
             labelEnableText="AN"
             labelDisableText="AUS"
             @change="toggleButtonChangedEvent"
           />
+          <v-progress-linear
+            :color="value ? 'white' : color"
+            style="width: 100%"
+            indeterminate
+            rounded
+            height="55"
+            v-if="transmitting"
+          />
         </v-list-item-title>
-        <v-list-item-subtitle>{{ description }}</v-list-item-subtitle>
+        <v-list-item-subtitle>
+          <div style="height: 34px">
+            {{ description }}
+          </div>
+        </v-list-item-subtitle>
       </v-list-item-content>
       <v-list-item-avatar tile size="120">
         <v-icon :v-bind="value" :color="value ? 'white' : '#343a40'" size="120">
@@ -31,6 +44,7 @@ export default {
   data() {
     return {
       value: this.initialValue || false,
+      transmitting: false,
     };
   },
   computed: {
@@ -41,8 +55,15 @@ export default {
     },
   },
   methods: {
+    sleep(time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    },
     toggleButtonChangedEvent(newValue) {
-      this.value = newValue;
+      this.transmitting = true;
+      this.sleep(5000).then(() => {
+        this.transmitting = false;
+        this.value = newValue;
+      });
     },
   },
 };
