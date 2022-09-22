@@ -20,7 +20,7 @@
           <v-list-item three-line>
             <v-list-item-content>
               <div class="text-overline">Logbuch:</div>
-              <v-simple-table dark dense style="background-color: #343a40">
+              <v-simple-table dark style="background-color: #343a40">
                 <template v-slot:default>
                   <thead>
                     <tr>
@@ -34,7 +34,13 @@
                       <td>{{ log.timestamp | formatDateTime }}</td>
                       <td>{{ log.initiator }}</td>
                       <td>
-                        {{ log.relay.name }}: hat
+                        hat
+                        <v-chip
+                          label
+                          outlined
+                          :color="log.value ? 'green' : 'gray'"
+                          >{{ log.relay.name }}</v-chip
+                        >
                         {{ log.value ? "angeschaltet" : "ausgeschaltet" }}
                       </td>
                     </tr>
@@ -58,7 +64,7 @@ export default {
     return { relays };
   },
   data: () => ({
-    measurements: {},
+    logs: [],
   }),
   methods: {
     updateLogs(logs) {
