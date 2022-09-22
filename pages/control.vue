@@ -3,64 +3,14 @@
     <v-row dense>
       <v-col cols="12" sm="12" md="12" lg="6">
         <v-row dense>
-          <v-col cols="12">
+          <v-col v-for="relay in relays" v-bind:key="relay.name" cols="12">
             <Relay
-              id="relay_line1"
-              name="Bewässerung Linie 1"
-              :initialValue="true"
-              description="Bewässert gezielt in Wurzelnähe und damit sparsam, weil das Wasser genau da ankommt, wo es hin soll"
-              icon="mdi-water"
-              color="#0067AF"
-            />
-          </v-col>
-          <v-col cols="12">
-            <Relay
-              id="relay_line2"
-              name="Bewässerung Linie 2"
-              :initialValue="false"
-              description="Bewässert gezielt in Wurzelnähe und damit sparsam, weil das Wasser genau da ankommt, wo es hin soll"
-              icon="mdi-water"
-              color="#0067AF"
-            />
-          </v-col>
-          <v-col cols="12">
-            <Relay
-              id="relay_line3"
-              name="Bewässerung Linie 3"
-              :initialValue="false"
-              description="Bewässert gezielt in Wurzelnähe und damit sparsam, weil das Wasser genau da ankommt, wo es hin soll"
-              icon="mdi-water"
-              color="#0067AF"
-            />
-          </v-col>
-          <v-col cols="12">
-            <Relay
-              id="relay_line4"
-              name="Bewässerung Linie 4"
-              :initialValue="false"
-              description="Bewässert gezielt in Wurzelnähe und damit sparsam, weil das Wasser genau da ankommt, wo es hin soll"
-              icon="mdi-water"
-              color="#0067AF"
-            />
-          </v-col>
-          <v-col cols="12">
-            <Relay
-              id="relay_light"
-              name="Pflanzenlicht"
-              :initialValue="false"
-              description="Mit der LED-Decken-Beleuchtung kann das Wachstum und die Qualität von Gemüse gesteigert werden."
-              icon="mdi-white-balance-sunny"
-              color="#A092EB"
-            />
-          </v-col>
-          <v-col cols="12">
-            <Relay
-              id="relay_fans"
-              name="Ventilatoren"
-              :initialValue="false"
-              description="Durch die richtige Verwendung von Ventilatoren wird die Luft rund um die Pflanze sanft vermischt, wodurch krankheitsfördernde Bereiche mit hoher Luftfeuchtigkeit beseitigt werden und eine starke Transpiration gefördert wird."
-              icon="mdi-fan"
-              color="#C89542"
+              :id="relay.identifier"
+              :name="relay.name"
+              :initialValue="relay.value"
+              :description="relay.description"
+              :icon="relay.icon"
+              :color="relay.color"
             />
           </v-col>
         </v-row>
@@ -75,15 +25,18 @@
                   <thead>
                     <tr>
                       <th class="text-left">Zeit</th>
-                      <th class="text-left">Event</th>
                       <th class="text-left">Initiator</th>
+                      <th class="text-left">Event</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="log in logs" :key="log.event">
+                    <tr v-for="log in logs" :key="log.id">
                       <td>{{ log.timestamp | formatDateTime }}</td>
-                      <td>{{ log.event }}</td>
                       <td>{{ log.initiator }}</td>
+                      <td>
+                        {{ log.relay.name }}: hat
+                        {{ log.value ? "angeschaltet" : "ausgeschaltet" }}
+                      </td>
                     </tr>
                   </tbody>
                 </template>
@@ -100,20 +53,25 @@
 export default {
   name: "Steuerung",
   middleware: ["auth"],
-  data() {
-    return {
-      logs: [
-        {
-          event: "Started watering on Linie1",
-          timestamp: new Date(),
-          initiator: "Christoph",
-        },
-        {
-          event: "Started watering on Linie1",
-          timestamp: new Date(),
-          initiator: "Christoph",
-        },
-      ],
+  async asyncData({ $axios, $config }) {
+    const relays = await $axios.$get(`https://${$config.domain}/api/relays`);
+    return { relays };
+  },
+  data: () => ({
+    measurements: {},
+  }),
+  methods: {
+    updateLogs(logs) {
+      this.logs = logs;
+    },
+  },
+  mounted() {
+    const socket = new WebSocket(
+      `wss://${this.$config.domain}/api/relays/socket`
+    );
+    let nuxtPage = this;
+    socket.onmessage = function (message) {
+      nuxtPage.updateMeasurements(JSON.parse(message.data));
     };
   },
 };
