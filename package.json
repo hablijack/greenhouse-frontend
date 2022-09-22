@@ -22,7 +22,7 @@
     "nanoid": "2.1.11",
     "nuxt": "2.15.8",
     "nuxt-webfontloader": "1.1.0",
-    "sass": "1.54.9",
+    "sass": "1.55.0",
     "sass-loader": "10.1.1",
     "vue": "^2.6.14",
     "vue-server-renderer": "^2.6.14",
