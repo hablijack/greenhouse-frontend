@@ -20,11 +20,11 @@
           <v-list-item three-line>
             <v-list-item-content>
               <div class="text-overline">Logbuch:</div>
-              <v-simple-table dark style="background-color: #343a40">
+              <v-simple-table>
                 <template v-slot:default>
                   <thead>
                     <tr>
-                      <th class="text-left">Zeit</th>
+                      <th class="text-left">Zeitpunkt</th>
                       <th class="text-left">Initiator</th>
                       <th class="text-left">Event</th>
                     </tr>
@@ -73,7 +73,7 @@ export default {
   },
   mounted() {
     const socket = new WebSocket(
-      `wss://${this.$config.domain}/api/relays/socket`
+      `wss://${this.$config.domain}/api/relays/socket/${this.$auth.user.nickname}`
     );
     let nuxtPage = this;
     socket.onmessage = function (message) {

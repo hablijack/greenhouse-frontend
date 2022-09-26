@@ -60,10 +60,12 @@ export default {
     },
     toggleButtonChangedEvent(newValue) {
       this.transmitting = true;
-      this.sleep(5000).then(() => {
-        this.transmitting = false;
-        this.value = newValue;
-      });
+      this.$axios
+        .$post(`https://${this.$config.domain}/api/relay/${this.id}`)
+        .then(() => {
+          this.transmitting = false;
+          this.value = newValue;
+        });
     },
   },
 };
