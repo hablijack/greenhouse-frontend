@@ -67,8 +67,9 @@ export default {
     logs: [],
   }),
   methods: {
-    updateLogs(logs) {
-      this.logs = logs;
+    updateRelayOnWebsocketUpdate(newLogs) {
+      this.logs.unshift(...newLogs);
+      this.logs.pop();
     },
   },
   mounted() {
@@ -77,7 +78,7 @@ export default {
     );
     let nuxtPage = this;
     socket.onmessage = function (message) {
-      nuxtPage.updateLogs(JSON.parse(message.data));
+      nuxtPage.updateRelayOnWebsocketUpdate(JSON.parse(message.data));
     };
   },
 };

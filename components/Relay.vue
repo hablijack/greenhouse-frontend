@@ -61,7 +61,10 @@ export default {
     toggleButtonChangedEvent(newValue) {
       this.transmitting = true;
       this.$axios
-        .$post(`https://${this.$config.domain}/api/relay/${this.id}`)
+        .$post(`https://${this.$config.domain}/api/relay/${this.id}/switch`, {
+          initiator: this.$auth.user.nickname,
+          newValue: newValue,
+        })
         .then(() => {
           this.transmitting = false;
           this.value = newValue;
