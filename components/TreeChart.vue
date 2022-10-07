@@ -27,7 +27,7 @@
               >mdi-check-circle</v-icon
             >
             <div class="avat">
-              <img :src="`/img/${treeData.image_url}`" />
+              <img :src="`/img/${treeData.imageUrl}`" />
             </div>
             <div class="name">{{ treeData.name }}</div>
           </div>
@@ -40,7 +40,7 @@
               @click="$emit('click-node', mate)"
             >
               <div class="avat">
-                <img :src="`/img/${mate.image_url}`" />
+                <img :src="`/img/${mate.imageUrl}`" />
               </div>
               <div class="name">{{ mate.name }}</div>
             </div>
@@ -85,6 +85,7 @@ export default {
     json: {
       handler: function (Props) {
         let extendKey = function (jsonData) {
+          console.log(jsonData);
           jsonData.extend =
             jsonData.extend === void 0 ? true : !!jsonData.extend;
           if (Array.isArray(jsonData.children)) {

@@ -22,7 +22,7 @@ export default {
     return {
       architecture: {
         name: "Server",
-        image_url: "server.png",
+        imageUrl: "server.png",
         class: ["rootNode"],
         ip: "192.168.178.29:5550",
         online: true,
