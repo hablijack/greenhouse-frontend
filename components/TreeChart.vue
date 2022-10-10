@@ -22,9 +22,15 @@
           >
             <v-icon
               style="position: absolute; top: 0; right: 0; z-index: 20"
-              color="green"
+              color="#5cad8a"
               v-if="treeData.online"
               >mdi-check-circle</v-icon
+            >
+            <v-icon
+              style="position: absolute; top: 0; right: 0; z-index: 20"
+              color="#EA8162"
+              v-if="!treeData.online"
+              >mdi-minus-circle</v-icon
             >
             <div class="avat">
               <img :src="`/img/${treeData.imageUrl}`" />
