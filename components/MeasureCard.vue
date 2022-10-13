@@ -1,5 +1,5 @@
 <template>
-    <v-card :color=color dark>
+    <v-card :color="cardColor" dark>
         <v-list-item three-line>
             <v-list-item-content>
                 <div class="text-overline">
@@ -36,11 +36,24 @@ export default {
         'measurement',
         'icon',
         'description',
-        'color'
+        'color',
+        'minAlarmValue',
+        'maxAlarmValue'
     ],
     data() {
         return {
 
+        }
+    }, 
+    computed: {
+        cardColor() {
+            if(this.measurement <= this.minAlarmValue){
+                return "#EA8162";
+            } else if(this.measurement >= this.maxAlarmValue) {
+                return "#EA8162";
+            } else {
+                return "#5cad8a";
+            }
         }
     }
 }

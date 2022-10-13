@@ -49,7 +49,7 @@ export default {
       options: { customProperties: true },
       themes: {
         light: {
-          primary: '#6B2F1B',
+          primary: '#5cad8a',
           secondary: '#784C18',
           accent: '#36156B',
           info: '#1C87B8',

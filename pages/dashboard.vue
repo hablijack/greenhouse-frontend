@@ -15,7 +15,8 @@
           :unit="sensor.unit"
           :description="sensor.description"
           :icon="sensor.icon"
-          color="#5cad8a"
+          :minAlarmValue="sensor.minAlarmValue"
+          :maxAlarmValue="sensor.maxAlarmValue"
         />
       </v-col>
     </v-row>
