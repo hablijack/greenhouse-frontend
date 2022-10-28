@@ -91,7 +91,6 @@ export default {
     json: {
       handler: function (Props) {
         let extendKey = function (jsonData) {
-          console.log(jsonData);
           jsonData.extend =
             jsonData.extend === void 0 ? true : !!jsonData.extend;
           if (Array.isArray(jsonData.children)) {

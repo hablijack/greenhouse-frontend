@@ -3,7 +3,7 @@
     <v-row dense>
       <v-col
         v-for="sensor in sensors.slice(0, 4)"
-        v-bind:key="sensor.name"
+        v-bind:key="sensor.name + sensor.identifier"
         cols="12"
         sm="12"
         md="6"

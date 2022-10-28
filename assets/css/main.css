@@ -1,3 +1,6 @@
 html {
     overflow-y: auto !important;
 }
+.v-navigation-drawer > .v-navigation-drawer__border {
+    display: none;
+}
