@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <v-row dense>
+    <v-row>
       <v-col v-for="sensor in sensors" v-bind:key="sensor.name+sensor.unit" cols="12" sm="12" md="4" lg="4">
         <LimitCard
           :id="sensor.id"
