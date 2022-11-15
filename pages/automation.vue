@@ -1,12 +1,16 @@
 <template>
   <v-container fluid>
     <v-row>
-      <v-col v-for="relay in relays" v-bind:key="relay.name" cols="12">
-        <AutomationCard 
-          :icon="relay.icon" 
-          :headline="relay.name" 
-          :description="relay.description"
-        />
+      <v-col>
+        <v-expansion-panels>
+          <AutomationCard 
+            v-for="(relay,i) in relays" :key="i"
+            :id="relay.id"
+            :icon="relay.icon" 
+            :headline="relay.name" 
+            :description="relay.description"
+          />
+        </v-expansion-panels>
       </v-col>
     </v-row>
   </v-container>

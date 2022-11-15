@@ -52,10 +52,7 @@
                 </v-list-item-icon>
                 <v-list-item-title style="line-height: 2rem;" class="text-h6">Historie</v-list-item-title>
             </v-list-item>
-            <v-divider />
-        </v-list>
-
-        <template v-slot:append>
+            <v-divider class="mb-4" />
             <v-list-item v-if="$auth.$state.loggedIn">
                 <v-list-item-content>
                     <v-btn @click="$auth.logout()" to="/">
@@ -81,8 +78,7 @@
                     <i>© Copyright 2022 Greenhouse</i>
                 </v-list-item-subtitle>
             </v-list-item>
-        </template>
-
+        </v-list>
     </v-navigation-drawer>
 </template>
 
