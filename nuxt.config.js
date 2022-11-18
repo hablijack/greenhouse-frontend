@@ -23,7 +23,6 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/auth',
-    'nuxt-webfontloader',
   ],
 
   auth: {
@@ -75,12 +74,6 @@ export default {
     webpack: {
       ignored: '/node_modules/',
     },
-  },
-
-  webfontloader: {
-    google: {
-      families: ['Orbitron:900'],
-    }
   },
 
   plugins: [
