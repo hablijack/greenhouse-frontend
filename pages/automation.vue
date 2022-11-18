@@ -9,6 +9,8 @@
             :icon="relay.icon" 
             :headline="relay.name" 
             :description="relay.description"
+            :initialTimeTriggerActive="relay.timeTrigger.active"
+            :initialConditionTriggerActive="relay.conditionTrigger.active"
           />
         </v-expansion-panels>
       </v-col>

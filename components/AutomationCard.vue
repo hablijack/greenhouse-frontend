@@ -4,7 +4,7 @@
         <v-expansion-panel-header>
             <v-row no-gutters>
                 <v-col cols="1">
-                    <v-icon size="30">mdi-circle</v-icon>
+                    <v-icon :color="activeIconColor" size="30">mdi-circle</v-icon>
                 </v-col>
                 <v-col cols="11" style="font-size: 20px;">
                     <v-icon size="30">{{ icon }}</v-icon>
@@ -16,19 +16,20 @@
         <v-expansion-panel-content>
             <div class="mb-6">
                 {{ description }}
+                <v-divider/>
             </div>
-            <v-card class="mb-6" :color="timeCardColor">
-                <v-card-title>
-                    Zeitsteuerung:
-                    <v-spacer/>
-                    <ToggleButton
-                        :id="'time' + id"
-                        color="gray"
-                        labelEnableText="AN"
-                        labelDisableText="AUS"
-                        @change="timeTriggerSwitchEvent"
-                    />
-                </v-card-title>
+            <div class="mt-8 mb-3">
+                <span class="text-h6">Zeitsteuerung:</span>
+                <ToggleButton
+                    :id="'time' + id"
+                    color="#5cad8a"
+                    :defaultState="initialTimeTriggerActive"
+                    labelEnableText="AN"
+                    labelDisableText="AUS"
+                    @change="timeTriggerSwitchEvent"
+                />
+            </div>
+            <v-card class="mb-6" outlined :disabled="!timeTriggerEnabled">
                 <v-card-text>
                     <v-select
                         hide-details
@@ -52,18 +53,19 @@
                     />
                 </v-card-text>
             </v-card>
-            <v-card :color="conditionCardColor">
-                <v-card-title>
-                    Bedingungssteuerung:
-                    <v-spacer/>
-                    <ToggleButton
-                        :id="'condition' + id"
-                        color="gray"
-                        labelEnableText="AN"
-                        labelDisableText="AUS"
-                        @change="conditionTriggerSwitchEvent"
-                    />
-                </v-card-title>
+            <div class="mt-8 mb-3">
+                <span class="text-h6">Bedingungssteuerung:</span>
+                <ToggleButton
+                    :id="'condition' + id"
+                    :defaultState="initialConditionTriggerActive"
+                    color="#5cad8a"
+                    labelEnableText="AN"
+                    labelDisableText="AUS"
+                    @change="conditionTriggerSwitchEvent"
+                />
+            </div>
+            
+            <v-card outlined :disabled="!conditionTriggerEnabled">
                 <v-card-text>
                     <v-select
                         hide-details
@@ -106,11 +108,19 @@ export default {
             type: String,
             required: true,
         },
+        initialTimeTriggerActive: {
+            type: Boolean,
+            required: true,
+        },
+        initialConditionTriggerActive: {
+            type: Boolean,
+            required: true,
+        },
     },
     data() {
         return {
-            timeTriggerEnabled: false,
-            conditionTriggerEnabled: false,
+            timeTriggerEnabled: this.initialTimeTriggerActive,
+            conditionTriggerEnabled: this.initialConditionTriggerActive,
             saveButtonEnabled: false,
             isLoading: false,
             minuteRules: [
@@ -153,18 +163,11 @@ export default {
         },
     },
     computed: {
-        timeCardColor() {
-            if(this.timeTriggerEnabled) {
-                return "transparent";
+        activeIconColor()  {
+            if(this.timeTriggerEnabled || this.conditionTriggerEnabled) {
+                return "#5cad8a";
             } else {
-                return "#F0F0F0";
-            }
-        },
-        conditionCardColor() {
-            if(this.conditionTriggerEnabled) {
-                return "transparent";
-            } else {
-                return "#F0F0F0";
+                return "gray";
             }
         }
     }
