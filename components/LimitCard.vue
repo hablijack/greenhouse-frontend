@@ -24,7 +24,7 @@
                 type="number" 
                 @input="$emit('update:maxAlarmValue', $event)" />
         </v-card-text>
-        <v-card-actions style="text-align: right;">
+        <v-card-actions class="text-right">
             <v-btn 
                 color="primary"
                 @click="saveClick" 

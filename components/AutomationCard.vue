@@ -6,9 +6,9 @@
                 <v-col cols="1">
                     <v-icon :color="activeIconColor" size="30">mdi-circle</v-icon>
                 </v-col>
-                <v-col cols="11" style="font-size: 20px;">
+                <v-col cols="11">
                     <v-icon size="30">{{ icon }}</v-icon>
-                    {{headline}}
+                    <span class="text-h6">{{headline}}</span>
                 </v-col>
             </v-row>
         </v-expansion-panel-header>
@@ -87,6 +87,12 @@
         </v-expansion-panel-content>
     </v-expansion-panel>
 </template>
+
+<style lang="scss" scoped>
+.v-card--disabled {
+    background-color: #f0f0f0;
+}
+</style>
 
 <script>
 export default {
