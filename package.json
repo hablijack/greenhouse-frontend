@@ -30,7 +30,7 @@
     "webpack": "^4.46.0"
   },
   "devDependencies": {
-    "chromedriver": "109.0.0",
+    "chromedriver": "110.0.0",
     "nightwatch": "2.6.11"
   }
 }
